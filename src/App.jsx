@@ -3,7 +3,8 @@ import { useState, useEffect, useCallback } from "react";
 const ADMIN_USER = "sphere";
 const ADMIN_PASS = "Sphere#1";
 const INVITE_CODE = "spherecreator";
-const REQUIRED_HASHTAG = "#SpheresApp";
+const REQUIRED_HASHTAG = "#SphereApp";
+const LOGO_SRC = "/public/spherelogo.png";
 
 // Storage helpers
 const store = {
@@ -30,15 +31,15 @@ const store = {
 
 // Seed data
 const DEFAULT_CAMPAIGNS = [
-  { id: "c1", title: "The Wake-Up Call", description: "Check your bank account, react to how much you spent, then open Spheres and show your level/streak. Hook: relatable financial anxiety turned into motivation.", status: "active", hashtag: REQUIRED_HASHTAG },
+  { id: "c1", title: "The Wake-Up Call", description: "Check your bank account, react to how much you spent, then open Sphere and show your level/streak. Hook: relatable financial anxiety turned into motivation.", status: "active", hashtag: REQUIRED_HASHTAG },
   { id: "c2", title: "The Level-Up Moment", description: "Show the notification that you leveled up. React with genuine excitement. Show your tier and unlocked items. This is the core dopamine loop on display.", status: "active", hashtag: REQUIRED_HASHTAG },
-  { id: "c3", title: "The Comparison Flex", description: "Show your Spheres profile to a friend or talk to camera about it. Demonstrate the social currency — 'I'm level 22, what are you?' Playful competition, not preachy.", status: "active", hashtag: REQUIRED_HASHTAG },
+  { id: "c3", title: "The Comparison Flex", description: "Show your Sphere profile to a friend or talk to camera about it. Demonstrate the social currency — 'I'm level 22, what are you?' Playful competition, not preachy.", status: "active", hashtag: REQUIRED_HASHTAG },
 ];
 
 const DEFAULT_DM_TEMPLATES = [
-  { id: "t1", name: "Initial Outreach", platform: "TikTok", message: `Hey {{handle}}! 👋 Love your content — especially your recent stuff about {{topic}}. I'm building a finance app called Spheres that gamifies saving for college students, and I think your audience would genuinely vibe with it. We're looking for creators to make short 15-30s videos about the app. $5 per video + bonuses if it performs well (some creators are making $15-25/video). Interested? I can send you access to our creator portal right away. Just sign up at [PORTAL LINK] and use the code: spherecreator` },
+  { id: "t1", name: "Initial Outreach", platform: "TikTok", message: `Hey {{handle}}! 👋 Love your content — especially your recent stuff about {{topic}}. I'm building a finance app called Sphere that gamifies saving for college students, and I think your audience would genuinely vibe with it. We're looking for creators to make short 15-30s videos about the app. $5 per video + bonuses if it performs well (some creators are making $15-25/video). Interested? I can send you access to our creator portal right away. Just sign up at [PORTAL LINK] and use the code: spherecreator` },
   { id: "t2", name: "Follow-Up", platform: "TikTok", message: `Hey {{handle}}! Just following up on my last message — totally understand if you're busy. The offer's still open: quick 15-30s videos, $5 guaranteed + performance bonuses. No contracts, no pressure. Let me know if you're down! 🚀` },
-  { id: "t3", name: "Initial Outreach", platform: "Instagram", message: `Hi {{handle}}! Been following your content and think you'd be a great fit for something I'm working on. Spheres is a gamified finance app for students — we're paying creators $5/video + performance bonuses for short-form content. Super low-effort, 15-30 seconds, post on your own account. Want in? Sign up at [PORTAL LINK] with code: spherecreator` },
+  { id: "t3", name: "Initial Outreach", platform: "Instagram", message: `Hi {{handle}}! Been following your content and think you'd be a great fit for something I'm working on. Sphere is a gamified finance app for students — we're paying creators $5/video + performance bonuses for short-form content. Super low-effort, 15-30 seconds, post on your own account. Want in? Sign up at [PORTAL LINK] with code: spherecreator` },
 ];
 
 // Icons as simple SVG components
@@ -277,9 +278,14 @@ function AuthScreen({ onLogin }) {
       <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');`}</style>
       <div style={{ width: "100%", maxWidth: 420, padding: 20 }}>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
-          <div style={{ fontSize: 32, fontWeight: 800, color: theme.text, letterSpacing: "-0.02em" }}>
-            <span style={{ color: theme.accent }}>◉</span> Spheres
-          </div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, fontSize: 32, fontWeight: 800, color: theme.text, letterSpacing: "-0.02em" }}>
+  <img
+    src={LOGO_SRC}
+    alt="Sphere logo"
+    style={{ width: 34, height: 34, objectFit: "cover", borderRadius: 8 }}
+  />
+  <span>Sphere</span>
+</div>
           <p style={{ fontSize: 13, color: theme.textMuted, marginTop: 4 }}>Creator Hub</p>
         </div>
 
@@ -385,10 +391,19 @@ function AdminDashboard({ onLogout }) {
 
       {/* Sidebar */}
       <div style={{ width: 220, background: theme.bgCard, borderRight: `1px solid ${theme.border}`, padding: "20px 12px", display: "flex", flexDirection: "column", position: "fixed", top: 0, left: 0, bottom: 0, zIndex: 100 }}>
-        <div style={{ fontSize: 20, fontWeight: 800, color: theme.text, padding: "4px 12px 20px", letterSpacing: "-0.02em" }}>
-          <span style={{ color: theme.accent }}>◉</span> Spheres
-          <span style={{ display: "block", fontSize: 10, fontWeight: 600, color: theme.textMuted, textTransform: "uppercase", letterSpacing: "0.08em", marginTop: 2 }}>Admin Hub</span>
-        </div>
+        <div style={{ padding: "4px 12px 20px" }}>
+  <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 20, fontWeight: 800, color: theme.text, letterSpacing: "-0.02em" }}>
+    <img
+      src={LOGO_SRC}
+      alt="Sphere logo"
+      style={{ width: 24, height: 24, objectFit: "cover", borderRadius: 6 }}
+    />
+    <span>Sphere</span>
+  </div>
+  <span style={{ display: "block", fontSize: 10, fontWeight: 600, color: theme.textMuted, textTransform: "uppercase", letterSpacing: "0.08em", marginTop: 2 }}>
+    Admin Hub
+  </span>
+</div>
         <nav style={{ flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
           {nav.map(n => (
             <button key={n.id} onClick={() => setPage(n.id)} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", borderRadius: 8, border: "none", background: page === n.id ? theme.accentSoft : "transparent", color: page === n.id ? theme.accent : theme.textMuted, fontFamily: font, fontSize: 13, fontWeight: 600, cursor: "pointer", textAlign: "left", transition: "all 0.15s", position: "relative" }}>
@@ -722,8 +737,8 @@ function AdminSubmissions({ submissions, updateSubmissions, creators, campaigns 
                 {/* Hashtag */}
                 <div style={{ background: theme.bgInput, borderRadius: 8, padding: "12px 14px", marginBottom: 16 }}>
                   <div style={{ fontSize: 10, fontWeight: 600, color: theme.textDim, textTransform: "uppercase", marginBottom: 6 }}>Required Hashtag</div>
-                  <div style={{ fontSize: 13, color: selected.description?.includes("#SpheresApp") || selected.description?.includes("#spheresapp") ? theme.success : theme.danger }}>
-                    {selected.description?.toLowerCase().includes("#spheresapp") ? "✓ #SpheresApp included" : "✗ #SpheresApp missing"}
+                  <div style={{ fontSize: 13, color: selected.description?.includes("#SphereApp") || selected.description?.includes("#sphereapp") ? theme.success : theme.danger }}>
+                    {selected.description?.toLowerCase().includes("#sphereapp") ? "✓ #SphereApp included" : "✗ #SphereApp missing"}
                   </div>
                 </div>
 
@@ -952,10 +967,19 @@ function CreatorPortal({ user, onLogout }) {
 
       {/* Sidebar */}
       <div style={{ width: 220, background: theme.bgCard, borderRight: `1px solid ${theme.border}`, padding: "20px 12px", display: "flex", flexDirection: "column", position: "fixed", top: 0, left: 0, bottom: 0, zIndex: 100 }}>
-        <div style={{ fontSize: 20, fontWeight: 800, color: theme.text, padding: "4px 12px 20px", letterSpacing: "-0.02em" }}>
-          <span style={{ color: theme.accent }}>◉</span> Spheres
-          <span style={{ display: "block", fontSize: 10, fontWeight: 600, color: theme.textMuted, textTransform: "uppercase", letterSpacing: "0.08em", marginTop: 2 }}>Creator Portal</span>
-        </div>
+        <div style={{ padding: "4px 12px 20px" }}>
+  <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 20, fontWeight: 800, color: theme.text, letterSpacing: "-0.02em" }}>
+    <img
+      src={LOGO_SRC}
+      alt="Sphere logo"
+      style={{ width: 24, height: 24, objectFit: "cover", borderRadius: 6 }}
+    />
+    <span>Sphere</span>
+  </div>
+  <span style={{ display: "block", fontSize: 10, fontWeight: 600, color: theme.textMuted, textTransform: "uppercase", letterSpacing: "0.08em", marginTop: 2 }}>
+    Admin Hub
+  </span>
+</div>
         <nav style={{ flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
           {nav.map(n => (
             <button key={n.id} onClick={() => setPage(n.id)} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", borderRadius: 8, border: "none", background: page === n.id ? theme.accentSoft : "transparent", color: page === n.id ? theme.accent : theme.textMuted, fontFamily: font, fontSize: 13, fontWeight: 600, cursor: "pointer", textAlign: "left", transition: "all 0.15s" }}>
@@ -1059,7 +1083,7 @@ function CreatorPortal({ user, onLogout }) {
                 { title: "Required Hashtag", desc: `Include ${REQUIRED_HASHTAG} in your caption. Every video, every time.` },
                 { title: "Platform", desc: "Post on your own TikTok or Instagram account." },
                 { title: "Audio", desc: "Clear audio, no background music that drowns out speech (unless it's a trending sound)." },
-                { title: "Content", desc: "Show Spheres in use — your level, your streak, your tier. Make it feel real, not scripted." },
+                { title: "Content", desc: "Show Sphere in use — your level, your streak, your tier. Make it feel real, not scripted." },
                 { title: "Don'ts", desc: "No misleading claims about the app. No hate speech. No competitors mentioned." },
               ].map((item, i) => (
                 <div key={i} style={{ padding: "14px 0", borderBottom: i < 6 ? `1px solid ${theme.border}` : "none" }}>
@@ -1130,12 +1154,12 @@ function CreatorSubmitForm({ campaigns, onSubmit }) {
         <Input label="Video Link" value={form.videoLink} onChange={v => setForm({ ...form, videoLink: v })} placeholder="https://www.tiktok.com/@you/video/..." required />
         <Input label="Caption / Description" value={form.description} onChange={v => setForm({ ...form, description: v })} textarea placeholder={`Your caption (make sure to include ${REQUIRED_HASHTAG})...`} />
 
-        {form.description && !form.description.toLowerCase().includes("#spheresapp") && (
+        {form.description && !form.description.toLowerCase().includes("#sphereapp") && (
           <div style={{ background: theme.warningSoft, border: "1px solid rgba(245,158,11,0.3)", borderRadius: 8, padding: "10px 14px", marginBottom: 14, fontSize: 12, color: theme.warning }}>⚠ Don't forget to include {REQUIRED_HASHTAG} in your caption!</div>
         )}
 
         <div style={{ background: theme.bgInput, borderRadius: 8, padding: "12px 16px", marginBottom: 20, fontSize: 12, color: theme.textMuted, lineHeight: 1.6 }}>
-          By submitting, you grant Spheres the right to use, repost, and promote this video across our channels. You retain ownership of your content.
+          By submitting, you grant Sphere the right to use, repost, and promote this video across our channels. You retain ownership of your content.
         </div>
 
         <Button onClick={handleSubmit} disabled={!form.videoLink} style={{ width: "100%", justifyContent: "center" }} size="lg">Submit Video</Button>
