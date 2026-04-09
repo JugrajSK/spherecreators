@@ -4,7 +4,7 @@ const ADMIN_USER = "sphere";
 const ADMIN_PASS = "Sphere#1";
 const INVITE_CODE = "spherecreator";
 const REQUIRED_HASHTAG = "#SphereApp";
-const LOGO_SRC = "/public/spherelogo.png";
+const LOGO_SRC = "/public/spherelogo1.jpg";
 
 // Storage helpers
 const store = {
